@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Wndrr.Mjml.CSharp</id>
+    <version>$version$</version>
+    <authors>Wndrr</authors>
+    <owners>Wndrr</owners>
+    <licenseUrl>https://github.com/Wndrr/Mjml-CSharp/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Wndrr/Mjml-CSharp</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Wndrr/Mjml-CSharp/master/Mjml/icon.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A C# wrapper for the MJML framework </description>
+    <releaseNotes>Test release</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>C#, Mjml</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\Wndrr.Mjml.CSharp.dll" target="lib\net45" />
+    <file src="bin\Release\System.Management.Automation.dll" target="lib\net45" />
+  </files>
+</package>

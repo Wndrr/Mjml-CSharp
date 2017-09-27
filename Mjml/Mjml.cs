@@ -4,7 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 
-namespace Wndrr.Mjml
+namespace Wndrr.Mjml.CSharp
 {
     public static class Mjml
     {

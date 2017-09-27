@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Wndrr.Mjml;
+using Wndrr.Mjml.CSharp;
 
 namespace Testulum.Controllers
 {

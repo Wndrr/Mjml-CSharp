@@ -119,9 +119,9 @@
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mjml\Mjml.csproj">
+    <ProjectReference Include="..\Mjml\Wndrr.Mjml.CSharp.csproj">
       <Project>{A6B899BD-8464-4CB2-BFA0-1C66F36298D2}</Project>
-      <Name>Mjml</Name>
+      <Name>Wndrr.Mjml.CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
