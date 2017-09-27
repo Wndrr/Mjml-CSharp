@@ -6,53 +6,58 @@ using System.Reflection;
 
 namespace Wndrr.Mjml.CSharp
 {
-    public static class Mjml
+    public class Mjml
     {
-        private static string _nodePath;
-        private static string _mjmlPath;
-        private static string _mjmlContent;
+        #region INIT
+        
+        private readonly string _nodePath = Path.Combine(AssemblyDirectory, ".bin", "Node.exe");
+        private readonly string _mjmlPath = Path.Combine(AssemblyDirectory, ".bin", "mjmlFromString");
 
         public static string AssemblyDirectory
         {
             get
             {
-                string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                UriBuilder uri = new UriBuilder(codeBase);
-                string path = Uri.UnescapeDataString(uri.Path);
+                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+                var uri = new UriBuilder(codeBase);
+                var path = Uri.UnescapeDataString(uri.Path);
                 return Path.GetDirectoryName(path);
             }
         }
 
-        public static void Init(string mjmlContent, string mjmlPath = null, string nodePath = null)
+        #endregion
+
+        #region RENDERING
+
+        public string Render(string mjmlSrc)
         {
-            _mjmlContent = mjmlContent;
-            _mjmlPath = mjmlPath ?? Path.Combine(AssemblyDirectory, ".bin", "mjmlFromString");
-            _nodePath = nodePath ?? Path.Combine(AssemblyDirectory, ".bin", "Node.exe");
+            var command = $"$htmlOutput = {_nodePath} {_mjmlPath} -c \"{mjmlSrc}\"";
+
+            return RunPowershellCmd(command);
         }
 
-        public static string Render()
+        private static string RunPowershellCmd(string command)
         {
-            var output = string.Empty;
-            
-            var command = $"$htmlOutput = {_nodePath} {_mjmlPath} -c \"{_mjmlContent}\"";
-
             var powerShell = PowerShell.Create();
 
             powerShell.AddScript(command);
             powerShell.Invoke();
             var t = powerShell.Runspace.SessionStateProxy.GetVariable("htmlOutput") as object[];
 
-            if (t != null)
+            var output = string.Empty;
+
+            if(t != null)
             {
                 output = t.Cast<PSObject>().Aggregate(output, (current, item) => current + item.BaseObject.ToString());
             }
 
-            if (powerShell.Streams.Error.Count > 0)
+            if(powerShell.Streams.Error.Count > 0)
             {
                 output = powerShell.Streams.Error.Aggregate(output, (current, err) => current + (err + "<br />"));
             }
-            return output;
 
+            return output;
         }
+
+        #endregion
     }
 }
