@@ -40,8 +40,9 @@ namespace Wndrr.Mjml
 
             powerShell.AddScript(command);
             powerShell.Invoke();
+            var t = powerShell.Runspace.SessionStateProxy.GetVariable("htmlOutput") as object[];
 
-            if (powerShell.Runspace.SessionStateProxy.GetVariable("htmlOutput") is object[] t)
+            if (t != null)
             {
                 output = t.Cast<PSObject>().Aggregate(output, (current, item) => current + item.BaseObject.ToString());
             }
