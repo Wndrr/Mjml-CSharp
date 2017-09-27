@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -33,6 +34,11 @@ namespace Wndrr.Mjml.CSharp
             var command = $"$htmlOutput = {_nodePath} {_mjmlPath} -c \"{mjmlSrc}\"";
 
             return RunPowershellCmd(command);
+        }
+
+        public string[] Render(params string[] mjmlSrcs)
+        {
+            return mjmlSrcs.Select(RunPowershellCmd).ToArray();
         }
 
         private static string RunPowershellCmd(string command)
