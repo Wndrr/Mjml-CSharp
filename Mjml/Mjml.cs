@@ -45,22 +45,18 @@ namespace Wndrr.Mjml.CSharp
         {
             var powerShell = PowerShell.Create();
 
-            powerShell.AddScript(command);
-            powerShell.Invoke();
-            var t = powerShell.Runspace.SessionStateProxy.GetVariable("htmlOutput") as object[];
+            powerShell.AddScript(command).Invoke();
+
+            var htmlOutput = powerShell.Runspace.SessionStateProxy.GetVariable("htmlOutput") as object[];
 
             var output = string.Empty;
 
-            if(t != null)
-            {
-                output = t.Cast<PSObject>().Aggregate(output, (current, item) => current + item.BaseObject.ToString());
-            }
-
+            if(htmlOutput != null)
+                output = htmlOutput.Cast<PSObject>().Aggregate(output, (current, item) => current + item.BaseObject.ToString());
+            
             if(powerShell.Streams.Error.Count > 0)
-            {
                 output = powerShell.Streams.Error.Aggregate(output, (current, err) => current + (err + "<br />"));
-            }
-
+            
             return output;
         }
 
