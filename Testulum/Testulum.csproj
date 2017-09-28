@@ -103,7 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="bower.json" />
     <Content Include="package.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

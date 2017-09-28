@@ -1,7 +1,7 @@
 {
-  "name": "myproject",
-  "version": "1.0.0",
-  "devDependencies": {
-    "mjml": "^3.3.5"
-  }
+    "name": "wndrr.mjml.csharp",
+    "version": "1.0.0",
+    "dependencies": {
+        "mjml": "^3.3.5"
+    }
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { mjml2html } = require('mjml')
+const mjml2html = require('C:\\Projects\\Mjml\\Mjml\\node_modules\\mjml\\lib\\index.js')
 
 var mjmlContentArgIndex = process.argv.indexOf("-c");
 var helpArgIndex = process.argv.indexOf("-h");

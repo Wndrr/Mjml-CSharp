@@ -10,20 +10,38 @@ namespace Wndrr.Mjml.CSharp
     public class Mjml
     {
         #region INIT
-        
-        private readonly string _nodePath = Path.Combine(AssemblyDirectory, ".bin", "Node.exe");
-        private readonly string _mjmlPath = Path.Combine(AssemblyDirectory, ".bin", "mjmlFromString");
 
-        public static string AssemblyDirectory
+        private static string RootNamespace => typeof(Mjml).Namespace;
+        private static readonly string NodePath = Path.Combine(Path.GetTempPath(), $"{RootNamespace}.Node.exe");
+        private static readonly string MjmlPath = Path.Combine(Path.GetTempPath(), $"{RootNamespace}.mjmlFromString");
+
+        private static bool _areRessourcesInitialized;
+        
+        public Mjml()
         {
-            get
+            // Only init the ressources once to avoid writing to the file system every time an object is instanciated
+            if(!_areRessourcesInitialized)
             {
-                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                var uri = new UriBuilder(codeBase);
-                var path = Uri.UnescapeDataString(uri.Path);
-                return Path.GetDirectoryName(path);
+                InitRessources();
+                _areRessourcesInitialized = true;
             }
         }
+
+        #region RESSOURCES
+
+        private static void InitRessources()
+        {
+            CopyRessourceToTmp(Properties.Resources.node, NodePath);
+            CopyRessourceToTmp(Properties.Resources.mjmlFromString, MjmlPath);
+        }
+
+        private static void CopyRessourceToTmp(byte[] ressource, string targetName)
+        {
+            using(var exeFile = new FileStream(targetName, FileMode.Create))
+                exeFile.Write(ressource, 0, ressource.Length);
+        }
+
+        #endregion
 
         #endregion
 
@@ -31,7 +49,8 @@ namespace Wndrr.Mjml.CSharp
 
         public string Render(string mjmlSrc)
         {
-            var command = $"$htmlOutput = {_nodePath} {_mjmlPath} -c \"{mjmlSrc}\"";
+
+            var command = $"$htmlOutput = {NodePath} {MjmlPath} -c \"{mjmlSrc}\"";
 
             return RunPowershellCmd(command);
         }

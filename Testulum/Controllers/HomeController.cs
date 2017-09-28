@@ -12,7 +12,9 @@ namespace Testulum.Controllers
     {
         public ActionResult Index()
         {
-            Mjml.Init(@"<mjml>
+            var mjml = new Mjml();
+
+            var t = mjml.Render(@"<mjml>
   <mj-body>
     <mj-container background-color='#F2F2F2'>
       <mj-section vertical-align='center' padding-bottom='0px'>
@@ -102,7 +104,6 @@ namespace Testulum.Controllers
     </mj-container>
   </mj-body>
 </mjml>");
-            var t = Mjml.Render();
             return Content(t);
         }
     }
