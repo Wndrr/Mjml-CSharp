@@ -73,9 +73,9 @@ namespace Wndrr.Mjml.CSharp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] node {
+        internal static byte[] node_x86 {
             get {
-                object obj = ResourceManager.GetObject("node", resourceCulture);
+                object obj = ResourceManager.GetObject("node_x86", resourceCulture);
                 return ((byte[])(obj));
             }
         }

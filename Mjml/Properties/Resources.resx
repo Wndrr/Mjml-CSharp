@@ -121,7 +121,7 @@
   <data name="mjmlFromString" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mjmlFromString;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="node" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\node.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="node_x86" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\node-x86.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
