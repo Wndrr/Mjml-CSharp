@@ -22,14 +22,15 @@ namespace Wndrr.Mjml.CSharp
 
         public string Render(string mjmlSrc)
         {
-            var command = $"$htmlOutput = {DependenciesManager.NodePath} {DependenciesManager.MjmlPath} -c \"{mjmlSrc}\"";
+            // the backtick character (`)  before the double quotes are used to remove the need to escape the source string
+            var command = $"$htmlOutput = {DependenciesManager.NodePath} {DependenciesManager.MjmlPath} -c `\"{mjmlSrc}`\"";
 
             return Utils.RunPowershellCmd(command);
         }
 
         public string[] Render(params string[] mjmlSrcs)
         {
-            return mjmlSrcs.Select(s => Utils.RunPowershellCmd(s)).ToArray();
+            return mjmlSrcs.Select(Render).ToArray();
         }
 
         #endregion
