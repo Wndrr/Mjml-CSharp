@@ -23,7 +23,7 @@ namespace Wndrr.Mjml.CSharp
         public string Render(string mjmlSrc)
         {
             // the backtick character (`)  before the double quotes are used to remove the need to escape the source string
-            var command = $"$htmlOutput = {DependenciesManager.NodePath} {DependenciesManager.MjmlPath} -c `\"{mjmlSrc}`\"";
+            var command = $"$htmlOutput = {DependenciesManager.NodePath} {DependenciesManager.MjmlPath} -c `\"{MjmlTools.Minify(mjmlSrc)}`\"";
 
             return Utils.RunPowershellCmd(command);
         }
