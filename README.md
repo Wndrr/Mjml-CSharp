@@ -1,3 +1,11 @@
+# /!\ WARNING /!\
+The library is currently being completly re-written. Below is a simple list of the major changes that will have to be taken into account for the next release
+
+- [ ] Convert from .NET Framework 4.x to .NET Standard 2.0
+- [ ] Remove installation of node and npm from the library's tasks. Use system-installed node (couldn't be bothered to handle cross-plateform node install)
+
+The usage of the library sholdn't change at all, but the internals will see a massive update. The installation process will be different too. The library's performances should improve because of the remove overhead.
+
 # Mjml-CSharp
 
 A C#.NET Wrapper for the [Mjml framework](https://mjml.io/)
