@@ -15,7 +15,6 @@
     <tags>C#, Mjml</tags>
   </metadata>
   <files>
-    <file src="bin\Release\Wndrr.Mjml.CSharp.dll" target="lib\net45" />
-    <file src="bin\Release\System.Management.Automation.dll" target="lib\net45" />
+    <file src="bin\Release\netstandard2.0\Wndrr.Mjml.CSharp.dll" target="lib" />
   </files>
 </package>
