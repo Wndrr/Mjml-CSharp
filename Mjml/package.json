@@ -1,7 +1,0 @@
-{
-    "name": "wndrr.mjml.csharp",
-    "version": "1.0.0",
-    "dependencies": {
-        "mjml": "^3.3.5"
-    }
-}

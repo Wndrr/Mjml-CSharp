@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.IO;
 using System.Web.Mvc;
-using Wndrr.Mjml;
 using Wndrr.Mjml.CSharp;
 
 namespace Testulum.Controllers
@@ -12,11 +8,13 @@ namespace Testulum.Controllers
     {
         public ActionResult Index()
         {
-            var mjml = new Mjml();
+            var readAllText = System.IO.File.ReadAllText(@"C:\Projects\Mjml\test.mjml");
 
-            var readAllText = System.IO.File.ReadAllText("C:\\Projects\\StackOverflow\\StackOverflow\\test.txt");
-            var t = mjml.Render(readAllText);
-            return Content(t);
+            Mjml.PathRepository.NodePath = @"C:\Program Files\nodejs\node.exe";
+            Mjml.PathRepository.NpmPath = @"C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js";
+            Mjml.PathRepository.TmpPath = Path.GetTempPath();
+            
+            return Content(Mjml.Render(readAllText));
         }
     }
 }

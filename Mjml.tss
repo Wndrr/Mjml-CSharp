@@ -5,10 +5,16 @@
       <string>C:\Perso\Mjml-CSharp\README.md</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>C:\Perso\Mjml-CSharp\Testulum\Controllers\HomeController.cs</string>
+      <string>c:\perso\mjml-csharp\testulum\controllers\homecontroller.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>C:\Perso\Mjml-CSharp\Mjml\Mjml.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>c:\perso\mjml-csharp\mjml\utils.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>c:\perso\mjml-csharp\mjml\dependenciesmanager.cs</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
