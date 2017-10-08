@@ -1,11 +1,3 @@
-# /!\ WARNING /!\
-The library is currently being completly re-written. Below is a simple list of the major changes that will have to be taken into account for the next release
-
-- [ ] Convert from .NET Framework 4.x to .NET Standard 2.0
-- [ ] Remove installation of node and npm from the library's tasks. Use system-installed node (couldn't be bothered to handle cross-plateform node install)
-
-The usage of the library sholdn't change at all, but the internals will see a massive update. The installation process will be different too. The library's performances should improve because of the remove overhead.
-
 # Mjml-CSharp
 
 A C#.NET Wrapper for the [Mjml framework](https://mjml.io/)
@@ -25,41 +17,31 @@ You can install the package using the VisualStudio NuGet integration by searchin
 
 ### Minimal code
 
+#### Initialization
+
+You will need to tell the library where to find node, npm and where to write temporary files. This can be done as follow, before any call to `Render()` is made :
+
+    var nodeBasePath = @"C:\Program Files\nodejs";
+    Mjml.PathRepository.NodePath = $@"{nodeBasePath}\node.exe";
+    Mjml.PathRepository.NpmPath = $@"{nodeBasePath}\node_modules\npm\bin\npm-cli.js";
+    Mjml.PathRepository.TmpPath = Path.GetTempPath();
+
 #### The simple way
 
-All you really need to do in the code is to instanciate a `Mjml` object and then call the `Render` method
+Once the paths are set, you can render your MJML templates simply by calling `Mjml.Render(/* mjml */)`
 
-    var mjml = new Mjml();
-    var outputHtml = mjml.Render("mjml code");
+    var mjmlTemplate = "<mjml><mj-body><mj-container><mj-section><mj-column><mj-image width="100" src="/assets/img/logo-small.png"></mj-image><mj-divider border-color="#F45E43"></mj-divider><mj-text font-size="20px" color="#F45E43" font-family="helvetica">Hello World</mj-text></mj-column></mj-section></mj-container></mj-body></mjml>";
+    var outputHtml = Mjml.Render(mjmlTemplate);
 
 The `Render` method will return a string containing the HTML compiled from the input MJML code.
 
-#### Two more simple ways
-
-You can also pass an array of strings, or multiple strings as separate parameters to the `Render` method as follow.
-
-    var outputHtml = mjml.Render(new[]
-    {
-        "mjml code", 
-        "more mjml code"
-    });
-
-or
-
-    var outputHtml = mjml.Render("mjml code", "more mjml code"); // You can add as many parameters as you wish
-
-Both of these multiple-input versions will return an array of strings.
-
 ## Deployment
 
-No special actions should be needed to go from dev to test/prod server.
+Be sure to use apropriate paths for the target server. This should be improved at some point. You can refer to the [related issue](https://github.com/Wndrr/Mjml-CSharp/issues/1)
 
 ## Built With
 
-* [Mjml framework](https://mjml.io/) - Responsive email templating framework engine thingy thingy (these guys are cool af)
-* [Node](https://nodejs.org) - eh, Node. I don't actually know much about the thing but it works so ye.
-* [DotNetZip.Semverd](https://github.com/haf/DotNetZip.Semverd) - Thanks to [haf](https://github.com/haf)
-* [Automation_PowerShell_3.0](https://www.nuget.org/packages/System.Management.Automation_PowerShell_3.0) - Thx to Microsoft Corporation
+[Mjml framework](https://mjml.io/) - Responsive email templating framework engine thingy thingy (these guys are cool af)
 
 ## Contributing
 
@@ -67,23 +49,18 @@ If you are willing to improve this project, read the [contributing](CONTRIBUTING
 
 ## Versioning
 
-The project follows some sort of SemVer convention, but out of laziness not all rules are actually applied on the NuGet repo. This simply means that I will only push on [NuGet](https://www.nuget.org/packages/Wndrr.Mjml.CSharp) the stable release which will induce a non-consecutive versioning style.
-
-Versioning should be following the [SemVer v2.0.0](http://semver.org/) rules quite (well, kind-of-maybe-somewhat) well on the [MyGet repo](https://www.myget.org/feed/wndrr-perso/package/nuget/Wndrr.Mjml.CSharp)
+Versioning should be following the [SemVer v2.0.0](http://semver.org/) rules quite well (actually ... kind-of-maybe-somewhat)
 
 You can find the released versions on the [tags page](https://github.com/Wndrr/Mjml-CSharp/tags)
 
 The latest in-dev versions can be found on the [MyGet repo](https://www.myget.org/feed/wndrr-perso/package/nuget/Wndrr.Mjml.CSharp)
 
-This project uses some sort of variation of [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Wndrr/Mjml-CSharp/tags).
-
 ## Authors
 
-* **Mathieu Viales Aka. Wndrr** 
-Fine me on
-- [Github](https://github.com/Wndrr)
-- [StackOverflow](https://stackoverflow.com/users/6838730/wndrr)
-- [MyBlog](http://wndrr.ovh/)
+* Mathieu Viales Aka. **Wndrr** 
+  * [Github](https://github.com/Wndrr)
+  * [StackOverflow](https://stackoverflow.com/users/6838730/wndrr)
+  * [MyBlog](http://wndrr.ovh/)
 
 ## License
 
@@ -92,6 +69,7 @@ This project is licensed under the MIT License - see the [license](LICENSE) file
 ## Acknowledgments
 
 * Thanks to the guys that made Node.exe (whoever they are)
+* Kinda thanks to the makers of npm even tho it's a pain to use it programatically
 * Thanks to the guys that made the MJML framework, give them a hi on [their slack](https://mjml.slack.com/messages/C12HESC2G/)
 * Special thanks to Iryusa and Dalefish for the help and directions
 * Super Thanks to Iryusa for the code sample
