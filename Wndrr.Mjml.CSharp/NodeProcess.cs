@@ -10,7 +10,7 @@ namespace Wndrr.Mjml.CSharp
         #region OUTPUT
 
         private readonly StringBuilder _standardOutput = new StringBuilder(string.Empty);
-        private readonly StringBuilder _stringBuilder = new StringBuilder(string.Empty);
+        private readonly StringBuilder _standardError = new StringBuilder(string.Empty);
 
         #endregion
 
@@ -31,19 +31,19 @@ namespace Wndrr.Mjml.CSharp
                 process.Start();
 
                 _standardOutput.Clear();
-                _stringBuilder.Clear();
+                _standardError.Clear();
 
                 while (!process.HasExited)
                 {
                     _standardOutput.Append(process.StandardOutput.ReadToEnd());
-                    _stringBuilder.Append(process.StandardError.ReadToEnd());
+                    _standardError.Append(process.StandardError.ReadToEnd());
                 }
 
                 process.Start();
 
                 process.WaitForExit();
 
-                var errorStr = _stringBuilder.ToString();
+                var errorStr = _standardError.ToString();
 
                 var run = errorStr != string.Empty ? errorStr : _standardOutput.ToString();
                 return run;
