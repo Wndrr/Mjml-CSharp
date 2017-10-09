@@ -30,6 +30,9 @@ namespace Wndrr.Mjml.CSharp
 
                 process.Start();
 
+                _standardOutput.Clear();
+                _stringBuilder.Clear();
+
                 while (!process.HasExited)
                 {
                     _standardOutput.Append(process.StandardOutput.ReadToEnd());
@@ -42,7 +45,8 @@ namespace Wndrr.Mjml.CSharp
 
                 var errorStr = _stringBuilder.ToString();
 
-                return errorStr != string.Empty ? errorStr : _standardOutput.ToString();
+                var run = errorStr != string.Empty ? errorStr : _standardOutput.ToString();
+                return run;
             }
         }
 
