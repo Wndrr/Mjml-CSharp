@@ -9,7 +9,7 @@ namespace Wndrr.Mjml.CSharp
 
         private static readonly NodeProcess NodeProcessProcess = new NodeProcess();
         
-        public Mjml()
+        static Mjml()
         {
             Dependencies.Install();
             
@@ -20,7 +20,7 @@ namespace Wndrr.Mjml.CSharp
         #endregion
 
         #region RENDERING
-
+        
         public static string Render(string mjmlSrc)
         {
             return NodeProcessProcess.Run($"{PathRepository.MjmlPath} -c \"{mjmlSrc}\"");
