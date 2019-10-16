@@ -60,7 +60,7 @@ The latest in-dev versions can be found on the [MyGet repo](https://www.myget.or
 * Mathieu Viales Aka. **Wndrr** 
   * [Github](https://github.com/Wndrr)
   * [StackOverflow](https://stackoverflow.com/users/6838730/wndrr)
-  * [MyBlog](http://wndrr.ovh/)
+  * [Blog](https://blog-mathieu.viales.fr/)
 
 ## License
 
