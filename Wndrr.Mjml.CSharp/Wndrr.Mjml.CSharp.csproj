@@ -7,6 +7,17 @@
     <RootNamespace>Wndrr.Mjml.CSharp</RootNamespace>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <LangVersion>8</LangVersion>
+    <PackageId>Wndrr.Mjml.CSharp</PackageId>
+    <Version>1.2.1</Version>
+    <Authors>Mathieu VIALES</Authors>
+    <RepositoryUrl>https://github.com/Wndrr/Mjml-CSharp</RepositoryUrl>
+    <Company />
+    <PackageProjectUrl>https://github.com/Wndrr/Mjml-CSharp</PackageProjectUrl>
+    <AssemblyVersion>1.2.1</AssemblyVersion>
+    <FileVersion>1.2.1</FileVersion>
+    <PackageTags>mjml, email-template, csharp csharp mjml</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
