@@ -1,4 +1,6 @@
 # Mjml-CSharp
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FWndrr%2FMjml-CSharp.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FWndrr%2FMjml-CSharp?ref=badge_shield)
+
 
 A C#.NET Wrapper for the [Mjml framework](https://mjml.io/)
 
@@ -72,6 +74,9 @@ The latest in-dev versions can be found on the [MyGet repo](https://www.myget.or
 
 This project is licensed under the MIT License - see the [license](LICENSE) file for details
 
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FWndrr%2FMjml-CSharp.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FWndrr%2FMjml-CSharp?ref=badge_large)
+
 ## Acknowledgments
 
 * Thanks to the guys that made Node.exe (whoever they are)
@@ -79,4 +84,3 @@ This project is licensed under the MIT License - see the [license](LICENSE) file
 * Thanks to the guys that made the MJML framework, give them a hi on [their slack](https://mjml.slack.com/messages/C12HESC2G/)
 * Special thanks to Iryusa and Dalefish for the help and directions
 * Super Thanks to Iryusa for the code sample
-
