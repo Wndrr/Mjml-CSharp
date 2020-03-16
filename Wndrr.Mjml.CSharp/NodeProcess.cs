@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Text;
+using System.Threading;
 
 namespace Wndrr.Mjml.CSharp
 {
@@ -20,7 +22,8 @@ namespace Wndrr.Mjml.CSharp
 
         internal string Run(string command)
         {
-            using (Process process = new Process())
+            
+            using (var process = new Process())
             {
                 process.StartInfo.FileName = @"C:\Program Files\nodejs\node.exe";
                 process.StartInfo.Arguments = command;
@@ -28,25 +31,48 @@ namespace Wndrr.Mjml.CSharp
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.RedirectStandardError = true;
 
-                process.Start();
+                var output = new StringBuilder();
+                var error = new StringBuilder();
 
-                _standardOutput.Clear();
-                _standardError.Clear();
-
-                while (!process.HasExited)
+                using var outputWaitHandle = new AutoResetEvent(false);
+                using var errorWaitHandle = new AutoResetEvent(false);
+                process.OutputDataReceived += (sender, e) => {
+                    if (e.Data == null)
+                    {
+                        outputWaitHandle.Set();
+                    }
+                    else
+                    {
+                        output.AppendLine(e.Data);
+                    }
+                };
+                process.ErrorDataReceived += (sender, e) =>
                 {
-                    _standardOutput.Append(process.StandardOutput.ReadToEnd());
-                    _standardError.Append(process.StandardError.ReadToEnd());
-                }
+                    if (e.Data == null)
+                    {
+                        errorWaitHandle.Set();
+                    }
+                    else
+                    {
+                        error.AppendLine(e.Data);
+                    }
+                };
 
                 process.Start();
 
-                process.WaitForExit();
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
 
-                var errorStr = _standardError.ToString();
+                const int timeout = 15 * 1000;
+                if (!process.WaitForExit(timeout) || !outputWaitHandle.WaitOne(timeout) || !errorWaitHandle.WaitOne(timeout)) 
+                    throw new TimeoutException($"The process did not finish before the timeout of {timeout} milliseconds");
+                    
+                    
+                // Process completed. Check process.ExitCode here.
+                if (process.ExitCode != 0)
+                    return error.ToString();
 
-                var run = errorStr != string.Empty ? errorStr : _standardOutput.ToString();
-                return run;
+                return output.ToString();
             }
         }
 
