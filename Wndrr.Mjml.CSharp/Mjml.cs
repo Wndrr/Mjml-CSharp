@@ -9,14 +9,6 @@ namespace Wndrr.Mjml.CSharp
 
         private static readonly NodeProcess NodeProcessProcess = new NodeProcess();
         
-        static Mjml()
-        {
-            Dependencies.Install();
-            
-            if(Dependencies.HasError)
-                throw new Exception($"<b>Dependency error</b>: {Dependencies.Errors}");
-        }
-
         #endregion
 
         #region RENDERING

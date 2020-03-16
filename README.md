@@ -15,15 +15,21 @@ This page will give you instructions to install the library, and the minimal cod
 The latest release can downloaded from [NuGet.org](https://www.nuget.org/packages/Wndrr.Mjml.CSharp). 
 You can install the package using the VisualStudio NuGet integration by searching for the `Wndrr.Mjml.CSharp` package.
 
+To work, the Mjml wrapper requires you to have NodeJs installed and the Mjml NPM package installed in your `dependencies` or `devDependencies` section.
+ 
+ Example `package.json`
+
+    "devDependencies": {
+        "mjml": "^4.6.2"
+    }
+
 ### Minimal code
 
 #### Initialization
 
 You will need to tell the library where to find node, npm and where to write temporary files. This can be done as follow, before any call to `Render()` is made :
 
-    var nodeBasePath = @"C:\Program Files\nodejs";
-    Mjml.PathRepository.NodePath = $@"{nodeBasePath}\node.exe";
-    Mjml.PathRepository.NpmPath = $@"{nodeBasePath}\node_modules\npm\bin\npm-cli.js";
+    Mjml.PathRepository.NodePath = @"C:\Program Files\nodejs\node.exe";
     Mjml.PathRepository.TmpPath = Path.GetTempPath();
 
 #### The simple way

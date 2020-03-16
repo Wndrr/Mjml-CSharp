@@ -1,7 +1,0 @@
-{
-  "name": "demo",
-  "version": "1.0.0",
-  "devDependencies": {
-    "mjml": "^4.6.2"
-  }
-}
