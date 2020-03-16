@@ -25,7 +25,7 @@ namespace Wndrr.Mjml.CSharp
             
             using (var process = new Process())
             {
-                process.StartInfo.FileName = @"C:\Program Files\nodejs\node.exe";
+                process.StartInfo.FileName = Mjml.PathRepository.NodePath;
                 process.StartInfo.Arguments = command;
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.RedirectStandardOutput = true;
