@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testulum", "Testulum\Testulum.csproj", "{CE7778F5-DF4B-4298-9EE4-CFC9E45D2B65}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wndrr.Mjml.CSharp", "Wndrr.Mjml.CSharp\Wndrr.Mjml.CSharp.csproj", "{07F93DFD-B210-4389-ABA6-EB056F8BC2B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{6B41DD8B-FAE1-4ADD-90F2-491A8A85D57B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,18 +14,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CE7778F5-DF4B-4298-9EE4-CFC9E45D2B65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE7778F5-DF4B-4298-9EE4-CFC9E45D2B65}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE7778F5-DF4B-4298-9EE4-CFC9E45D2B65}.NET45|Any CPU.ActiveCfg = Release|Any CPU
-		{CE7778F5-DF4B-4298-9EE4-CFC9E45D2B65}.NET45|Any CPU.Build.0 = Release|Any CPU
-		{CE7778F5-DF4B-4298-9EE4-CFC9E45D2B65}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE7778F5-DF4B-4298-9EE4-CFC9E45D2B65}.Release|Any CPU.Build.0 = Release|Any CPU
 		{07F93DFD-B210-4389-ABA6-EB056F8BC2B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{07F93DFD-B210-4389-ABA6-EB056F8BC2B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07F93DFD-B210-4389-ABA6-EB056F8BC2B5}.NET45|Any CPU.ActiveCfg = Debug|Any CPU
 		{07F93DFD-B210-4389-ABA6-EB056F8BC2B5}.NET45|Any CPU.Build.0 = Debug|Any CPU
 		{07F93DFD-B210-4389-ABA6-EB056F8BC2B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07F93DFD-B210-4389-ABA6-EB056F8BC2B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B41DD8B-FAE1-4ADD-90F2-491A8A85D57B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B41DD8B-FAE1-4ADD-90F2-491A8A85D57B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B41DD8B-FAE1-4ADD-90F2-491A8A85D57B}.NET45|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B41DD8B-FAE1-4ADD-90F2-491A8A85D57B}.NET45|Any CPU.Build.0 = Debug|Any CPU
+		{6B41DD8B-FAE1-4ADD-90F2-491A8A85D57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B41DD8B-FAE1-4ADD-90F2-491A8A85D57B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

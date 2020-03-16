@@ -23,6 +23,8 @@ namespace Wndrr.Mjml.CSharp
         
         public static string Render(string mjmlSrc)
         {
+            Console.WriteLine(@"Running following node command");
+            Console.WriteLine($@"{PathRepository.MjmlPath} -c ""{mjmlSrc}""");
             return NodeProcessProcess.Run($"{PathRepository.MjmlPath} -c \"{mjmlSrc}\"");
         }
 
@@ -42,7 +44,7 @@ namespace Wndrr.Mjml.CSharp
 
             public static string NodePath { get; set; }
             public static string NpmPath { get; set; }
-            internal static string MjmlPath => Path.Combine(TmpPath, "mjmlFromString");
+            internal static string MjmlPath => Path.Combine(Directory.GetCurrentDirectory(), Path.Combine("Resources", "mjmlFromString.mjs"));
         }
     }
 }
