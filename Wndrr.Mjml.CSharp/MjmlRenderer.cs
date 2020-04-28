@@ -18,12 +18,7 @@ namespace Wndrr.Mjml.CSharp
         {
             Console.WriteLine(@"Running following node command");
             Console.WriteLine($@"{MjmlPath} -c ""{mjmlSrc}""");
-            var nodeResult = nodeProcess.Run(nodePath, $"{MjmlPath} -c \"{mjmlSrc}\"");
-            return new RenderResult()
-            {
-                Success = nodeResult.ExitCode == 0,
-                Result = nodeResult.ExitCode == 0 ? nodeResult.StandardOutput : nodeResult.StandardError
-            };
+            return RenderResult.From(nodeProcess.Run(nodePath, $"{MjmlPath} -c \"{mjmlSrc}\""));
         }
 
         internal static string MjmlPath
