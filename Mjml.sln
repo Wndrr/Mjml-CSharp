@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Demo\Demo.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wndrr.Mjml.CSharp.Tests", "Wndrr.Mjml.CSharp.Tests\Wndrr.Mjml.CSharp.Tests.csproj", "{356C7B79-A7CE-4AF4-95FD-D22B681FBA71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.MvcApp", "Demo.MvcApp\Demo.MvcApp.csproj", "{D19C366F-F266-4E43-B9D2-C3D75321DFDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,12 @@ Global
 		{356C7B79-A7CE-4AF4-95FD-D22B681FBA71}.NET45|Any CPU.Build.0 = Debug|Any CPU
 		{356C7B79-A7CE-4AF4-95FD-D22B681FBA71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{356C7B79-A7CE-4AF4-95FD-D22B681FBA71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D19C366F-F266-4E43-B9D2-C3D75321DFDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19C366F-F266-4E43-B9D2-C3D75321DFDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19C366F-F266-4E43-B9D2-C3D75321DFDB}.NET45|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19C366F-F266-4E43-B9D2-C3D75321DFDB}.NET45|Any CPU.Build.0 = Debug|Any CPU
+		{D19C366F-F266-4E43-B9D2-C3D75321DFDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19C366F-F266-4E43-B9D2-C3D75321DFDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
