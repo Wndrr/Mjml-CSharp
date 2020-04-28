@@ -23,7 +23,7 @@ namespace Wndrr.Mjml.CSharp.Tests
                     </mj-body>
                 </mjml>");
 
-            Assert.IsTrue(rendered.Success, "This markup should render successfully.");
+            Assert.IsTrue(rendered.Success, "Markup should render successfully, instead got error: " + rendered.Result);
             Assert.IsTrue(rendered.Result.Contains("Hello World"), "Result should contain rendered text.");
         }
 
@@ -34,8 +34,7 @@ namespace Wndrr.Mjml.CSharp.Tests
 
             var rendered = renderer.Render("foo");
 
-            System.Console.WriteLine(rendered.Result);
-            Assert.IsFalse(rendered.Success, "Rendering invalid MJML should fail.");
+            Assert.IsFalse(rendered.Success, "Rendering invalid MJML should fail, instead got: " + rendered.Result);
             Assert.IsFalse(string.IsNullOrWhiteSpace(rendered.Result), "Result should explain the cause of the failure.");
         }
     }
