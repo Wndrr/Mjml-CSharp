@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using Wndrr.Mjml.CSharp;
 
@@ -10,10 +11,17 @@ namespace Demo
         {
             var renderer = new MjmlRenderer(@"C:\Program Files\nodejs\node.exe");
             var mjmlTemplate = File.ReadAllText("example.mjml");
-            var outputHtml = renderer.Render(mjmlTemplate);
-
-            File.WriteAllText("output.html", outputHtml);
-            Process.Start(new ProcessStartInfo() { FileName = "output.html", UseShellExecute = true });
+            var rendered = renderer.Render(mjmlTemplate);
+            if (rendered.Success)
+            {
+                File.WriteAllText("output.html", rendered.Result);
+                Process.Start(new ProcessStartInfo() { FileName = "output.html", UseShellExecute = true });
+            }
+            else
+            {
+                Console.Error.WriteLine(rendered.Result);
+                Environment.Exit(1);
+            }
         }
     }
 }

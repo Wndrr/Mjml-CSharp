@@ -12,7 +12,7 @@ namespace Wndrr.Mjml.CSharp.Tests
         {
             var renderer = new MjmlRenderer(nodePath);
 
-            var result = renderer.Render(@"
+            var rendered = renderer.Render(@"
                 <mjml>
                     <mj-body>
                         <mj-section>
@@ -23,7 +23,8 @@ namespace Wndrr.Mjml.CSharp.Tests
                     </mj-body>
                 </mjml>");
 
-            Assert.IsTrue(result.Contains("Hello World"));
+            Assert.IsTrue(rendered.Success, "This markup should render successfully.");
+            Assert.IsTrue(rendered.Result.Contains("Hello World"), "Result should contain rendered text.");
         }
 
         [TestMethod, TestCategory("Integration")]
@@ -31,10 +32,11 @@ namespace Wndrr.Mjml.CSharp.Tests
         {
             var renderer = new MjmlRenderer(nodePath);
 
-            var result = renderer.Render("foo");
+            var rendered = renderer.Render("foo");
 
-            //TODO: return an error?
-            Assert.IsTrue(result.Contains("Parsing failed"));
+            System.Console.WriteLine(rendered.Result);
+            Assert.IsFalse(rendered.Success, "Rendering invalid MJML should fail.");
+            Assert.IsFalse(string.IsNullOrWhiteSpace(rendered.Result), "Result should explain the cause of the failure.");
         }
     }
 }

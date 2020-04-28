@@ -27,7 +27,8 @@ namespace Demo.MvcApp.Controllers
                 </mj-section>
               </mj-body>
             </mjml>";
-            return Content(renderer.Render(mjml.Trim()), "text/html");
+
+            return Content(renderer.Render(mjml).Result, "text/html");
         }
     }
 }

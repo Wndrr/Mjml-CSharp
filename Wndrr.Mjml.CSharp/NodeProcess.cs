@@ -7,7 +7,7 @@ namespace Wndrr.Mjml.CSharp
 {
     internal sealed class NodeProcess
     {
-        internal string Run(string nodePath, string args)
+        internal NodeProcessResult Run(string nodePath, string args, int timeoutMs = 15 * 1000)
         {
             using var process = new Process();
             process.StartInfo.FileName = nodePath;
@@ -49,14 +49,15 @@ namespace Wndrr.Mjml.CSharp
             process.BeginOutputReadLine();
             process.BeginErrorReadLine();
 
-            const int timeout = 15 * 1000;
-            if (!process.WaitForExit(timeout) || !outputWaitHandle.WaitOne(timeout) || !errorWaitHandle.WaitOne(timeout))
-                throw new TimeoutException($"The process did not finish before the timeout of {timeout} milliseconds");
+            if (!process.WaitForExit(timeoutMs) || !outputWaitHandle.WaitOne(timeoutMs) || !errorWaitHandle.WaitOne(timeoutMs))
+                throw new TimeoutException($"The process did not finish before the timeout of {timeoutMs} milliseconds");
 
-            if (process.ExitCode != 0)
-                return error.ToString();
-
-            return output.ToString();
+            return new NodeProcessResult()
+            {
+                ExitCode = process.ExitCode,
+                StandardOutput = output.ToString(),
+                StandardError = error.ToString()
+            };
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IMjmlRenderer
     {
-        public string Render(string mjml);
+        public RenderResult Render(string mjml);
     }
 }

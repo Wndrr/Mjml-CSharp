@@ -14,11 +14,16 @@ namespace Wndrr.Mjml.CSharp
             this.nodePath = nodePath;
         }
 
-        public string Render(string mjmlSrc)
+        public RenderResult Render(string mjmlSrc)
         {
             Console.WriteLine(@"Running following node command");
             Console.WriteLine($@"{MjmlPath} -c ""{mjmlSrc}""");
-            return nodeProcess.Run(nodePath, $"{MjmlPath} -c \"{mjmlSrc}\"");
+            var nodeResult = nodeProcess.Run(nodePath, $"{MjmlPath} -c \"{mjmlSrc}\"");
+            return new RenderResult()
+            {
+                Success = nodeResult.ExitCode == 0,
+                Result = nodeResult.ExitCode == 0 ? nodeResult.StandardOutput : nodeResult.StandardError
+            };
         }
 
         internal static string MjmlPath
