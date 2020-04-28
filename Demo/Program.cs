@@ -6,13 +6,11 @@ namespace Demo
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Mjml.PathRepository.NodePath = @"C:\Program Files\nodejs\node.exe";
-            Mjml.PathRepository.TmpPath = Path.GetTempPath();
-
+            var renderer = new MjmlRenderer(@"C:\Program Files\nodejs\node.exe");
             var mjmlTemplate = File.ReadAllText("example.mjml");
-            var outputHtml = Mjml.Render(mjmlTemplate);
+            var outputHtml = renderer.Render(mjmlTemplate);
 
             File.WriteAllText("output.html", outputHtml);
             Process.Start(new ProcessStartInfo() { FileName = "output.html", UseShellExecute = true });
