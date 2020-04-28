@@ -9,6 +9,12 @@
       <ProjectReference Include="..\Wndrr.Mjml.CSharp\Wndrr.Mjml.CSharp.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="example.mjml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
       <Exec Command="npm install" />
     </Target>
