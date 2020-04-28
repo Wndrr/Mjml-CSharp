@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 namespace Wndrr.Mjml.CSharp
 {
@@ -7,7 +8,7 @@ namespace Wndrr.Mjml.CSharp
     {
         private readonly string nodePath;
         private readonly NodeProcess nodeProcess = new NodeProcess();
-        
+
         public MjmlRenderer(string nodePath)
         {
             this.nodePath = nodePath;
@@ -20,6 +21,13 @@ namespace Wndrr.Mjml.CSharp
             return nodeProcess.Run(nodePath, $"{MjmlPath} -c \"{mjmlSrc}\"");
         }
 
-        internal static string MjmlPath => Path.Combine(Directory.GetCurrentDirectory(), Path.Combine("Resources", "mjmlFromString.mjs"));
+        internal static string MjmlPath
+        {
+            get
+            {
+                string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                return Path.Combine(assemblyDir, "Resources", "mjmlFromString.mjs");
+            }
+        }
     }
 }
