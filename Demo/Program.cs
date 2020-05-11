@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using Wndrr.Mjml.CSharp;
 
@@ -6,17 +7,21 @@ namespace Demo
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Mjml.PathRepository.NodePath = @"C:\Program Files\nodejs\node.exe";
-            Mjml.PathRepository.TmpPath = Path.GetTempPath();
-            
-            var mjmlTemplate = "<mjml><mj-body><mj-section><mj-column><mj-image width=\"100px\" src=\"/assets/img/logo-small.png\"></mj-image><mj-divider border-color=\"#F45E43\"></mj-divider><mj-text font-size=\"20px\" color=\"#F45E43\" font-family=\"helvetica\">Hello World</mj-text></mj-column></mj-section></mj-body></mjml>";
-            var outputHtml = Mjml.Render(mjmlTemplate);
-            
-            Console.Write(outputHtml);
-
-            Console.ReadKey();
+            var renderer = new MjmlRenderer(@"C:\Program Files\nodejs\node.exe");
+            var mjmlTemplate = File.ReadAllText("example.mjml");
+            var rendered = renderer.Render(mjmlTemplate);
+            if (rendered.Success)
+            {
+                File.WriteAllText("output.html", rendered.Result);
+                Process.Start(new ProcessStartInfo() { FileName = "output.html", UseShellExecute = true });
+            }
+            else
+            {
+                Console.Error.WriteLine(rendered.Result);
+                Environment.Exit(1);
+            }
         }
     }
 }
