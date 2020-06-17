@@ -14,6 +14,8 @@ This page will give you instructions to install the library, and the minimal cod
 
 ### Installing
 
+*note: This library has only been tested with a global installation of NodeJs v13. Aparently, it doesn't work with node v10 or v12 (as per the issue [#12](https://github.com/Wndrr/Mjml-CSharp/issues/12);
+
 The latest release can downloaded from [NuGet.org](https://www.nuget.org/packages/Wndrr.Mjml.CSharp). 
 You can install the package using the VisualStudio NuGet integration by searching for the `Wndrr.Mjml.CSharp` package.
 
